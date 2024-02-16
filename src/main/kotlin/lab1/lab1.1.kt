@@ -1,7 +1,6 @@
 package org.example.lab1
 
 //3. Создать приложение, выводящее n строк с переходом и без перехода на новую строку.
-
 fun main() {
     val listOfString = arrayOf("Hello", "my", "name", "is", "Daria")
     var flag = true
