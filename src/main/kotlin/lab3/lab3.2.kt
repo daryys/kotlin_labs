@@ -7,12 +7,13 @@ package org.example.lab3
 
 fun main() {
     print("Enter n: ")
-    val n1 = readln().toIntOrNull() ?: 0
+    val n = readln().toIntOrNull() ?: 0
     print("Enter m: ")
-    val m1 = readln().toIntOrNull() ?: 0
-    val matrix1 = BoolMatrix(n1, m1)
+    val m = readln().toIntOrNull() ?: 0
+    val matrix1 = BoolMatrix(n, m)
+    val matrix2 = BoolMatrix(n, m)
     println(matrix1)
-    println(matrix1.countZeros())
+    println(matrix2)
 }
 
 class BoolMatrix(private val n: Int, private val m: Int, private val matrix: List<List<Boolean>>) {
@@ -21,28 +22,59 @@ class BoolMatrix(private val n: Int, private val m: Int, private val matrix: Lis
         List(m) { listOf(true, false).random() }
     })
 
+    constructor(matrix: List<List<Boolean>>) : this(matrix.size, matrix.getOrNull(0)?.size ?: 0, matrix)
+
     override fun toString(): String {
-        return  matrix.toString()
+        return matrix.toString()
     }
 
-//    fun sumMatrix(): List<BooleanArray> {
-//
-//    }
-//
-//    fun multiplyMatrix(): List<List<Int>> {
-//
-//    }
-//
-//    fun inverseMatrix(): List<List<Int>> {
-//
-//    }
+    fun andMatrix(boolMatrix: BoolMatrix) = if (boolMatrix.n == n && boolMatrix.m == m) {
+        BoolMatrix(boolMatrix.matrix.mapIndexed { i, row ->
+            row.mapIndexed { j, value ->
+                value && matrix[i][j]
+            }
+        })
+    } else {
+        throw Exception()
+    }
+
+    fun orMatrix(boolMatrix: BoolMatrix) = if (boolMatrix.n == n && boolMatrix.m == m) {
+        BoolMatrix(boolMatrix.matrix.mapIndexed { i, row ->
+            row.mapIndexed { j, value ->
+                value || matrix[i][j]
+            }
+        })
+    } else {
+        throw Exception()
+    }
+
+    fun inverseMatrix() = BoolMatrix(matrix.map { row ->
+        row.map { value ->
+            !value
+        }
+    })
+
+    fun multiplyMatrix(boolMatrix: BoolMatrix) = if (m == boolMatrix.n) {
+        val tempMatrix = mutableListOf<MutableList<Boolean>>()
+        for (i in 0..<n) {
+            val row = mutableListOf<Boolean>()
+            for (j in 0..<m) {
+                var currentElement = false
+                for (k in 0..<m) {
+                    currentElement = currentElement || boolMatrix.matrix[i][k] && matrix[k][j]
+                }
+                row.add(currentElement)
+            }
+            tempMatrix.add(row)
+        }
+    } else {
+        throw Exception()
+    }
+
+    fun sort() = BoolMatrix(matrix.map { it.sorted() })
 
     fun countZeros() = matrix.sumOf {
         it.count { value -> value }
     }
-
-//    fun arrangeMatrix(): List<List<Int>> {
-//
-//    }
 
 }
