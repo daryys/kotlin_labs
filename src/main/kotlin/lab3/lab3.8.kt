@@ -67,7 +67,7 @@ class Cash(
     val administrators: MutableList<Administrator> = mutableListOf()
 ) {
     fun registerRequest(request: Request) =
-        trains.filter { it.departure?.before(request.date) ?: false && it.listOfDestination.contains(request.destination) }
+        trains.filter { it.departure?.after(request.date) ?: false && it.listOfDestination.contains(request.destination) }
 
     fun addAdmin() {
         println("Name")

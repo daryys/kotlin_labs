@@ -10,7 +10,7 @@ fun main() {
     val shop = Shop()
     while (true) {
         println("Write exit to leave")
-        println("Chose action: 1) add client; 2) add admin; 3) chose role")
+        println("Chose action: 1) add client; 2) add admin; 3) choose role")
         val input = readln().lowercase()
         if (input != "exit") {
             when (readln().lowercase().toIntOrNull() ?: 0) {
@@ -22,7 +22,6 @@ fun main() {
         } else {
             break
         }
-
     }
 }
 
@@ -39,7 +38,7 @@ fun adminRole(shop: Shop) {
     println("Chose admin")
     println(shop.administrators)
     shop.administrators.getOrNull(readln().toIntOrNull() ?: 0)?.let {
-        println("Choose action (number): 1) add good; 2) change Good; 3) add to black list; 4) register order")
+        println("Choose action (number): 1) add good; 2) change good; 3) add to black list; 4) register order")
         when (readln().lowercase().toIntOrNull() ?: 0) {
             1 -> it.addGood()
             2 -> it.changeInformation()
@@ -72,14 +71,6 @@ class Shop(
     private val orders: MutableList<Order> = mutableListOf()
 ) {
 
-    fun Client.withAccess(action: () -> Unit) {
-        if (!blackList.contains(this.id)) {
-            action()
-        } else {
-            println("No access")
-        }
-    }
-
     fun addAdmin() {
         println("Name")
         administrators.add(Administrator(name = readln()))
@@ -104,6 +95,7 @@ class Shop(
 
         fun pay() = withAccess {
             println("Cash")
+            println(list.sumOf { it.price })
             val cash = readln().toIntOrNull() ?: 0
             if (cash >= list.sumOf { it.price }) {
                 println("Success")
@@ -124,6 +116,15 @@ class Shop(
         }
 
         override fun toString() = name
+
+        private fun withAccess(action: () -> Unit) {
+            if (!blackList.contains(id)) {
+                action()
+            } else {
+                println("No access")
+            }
+        }
+
 
     }
 
@@ -148,7 +149,7 @@ class Shop(
         fun changeInformation() {
             choseGood {
                 println("Information")
-                listOfGoods[listOfGoods.indexOf(it)] = it.copy(information = readln())
+                it.information = readln()
             }
         }
 
@@ -172,22 +173,21 @@ class Shop(
         override fun toString() = name
     }
 
-    data class Goods(val id: Int = Random.nextInt(), val name: String, val price: Int, var information: String)
-
     fun choseGood(action: (goods: Goods) -> Unit) {
         println(listOfGoods.toString())
         println("Input index")
-        val index = readln().toIntOrNull() ?: -1
-        listOfGoods.getOrNull(index)?.let {
+        listOfGoods.getOrNull(readln().toIntOrNull() ?: 0)?.let {
             action(it)
         } ?: println("Error")
     }
 
-    data class Order(
-        val id: Int = Random.nextInt(),
-        val clientId: Int,
-        val listOfGoods: MutableList<Goods>,
-        val status: Boolean = false
-    )
-
 }
+
+data class Order(
+    val id: Int = Random.nextInt(),
+    val clientId: Int,
+    val listOfGoods: MutableList<Goods>,
+    val status: Boolean = false
+)
+
+data class Goods(val id: Int = Random.nextInt(), val name: String, val price: Int, var information: String)

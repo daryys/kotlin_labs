@@ -5,7 +5,7 @@ import kotlin.math.abs
 
 // Создать объект класса Год, используя классы Месяц, День.
 // Методы: задать дату, вывести на консоль день недели по заданной дате,
-// рассчитать количество дней, месяцев в заданном временном промежутке.
+// рассчитать количество дней в заданном временном промежутке.
 
 fun main() {
 
@@ -32,7 +32,6 @@ data class Year(private var year: Int, private var day: Day, private var month: 
         365 * abs(after.year - before.year) + 30 * abs(after.month.month - before.month.month) + (after.day.day - before.day.day)
 
     override fun toString() = "${year}-${day.day}-${month.month}"
-
 }
 
 data class Day(val day: Int, val name: DayOfWeek)

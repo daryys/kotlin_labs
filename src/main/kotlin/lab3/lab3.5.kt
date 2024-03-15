@@ -4,8 +4,11 @@ import java.util.*
 
 // Создать объект класса Фотоальбом, используя класс Фотография.
 // Методы: задать название фотографии, дополнить фотоальбом фотографией, вывести на консоль количество фотографий.
+fun main() {
 
-data class Album(private val listOfPhotos: MutableList<Photo> = mutableListOf()) {
+}
+
+class Album(private val listOfPhotos: MutableList<Photo> = mutableListOf()) {
 
     fun addPhoto(photo: Photo) {
         listOfPhotos.add(photo)
@@ -20,4 +23,4 @@ data class Album(private val listOfPhotos: MutableList<Photo> = mutableListOf())
     override fun toString() = "Album: $listOfPhotos"
 }
 
-data class Photo(val date: Date = Date(), val url: String = "", var name: String = "")
+class Photo(val date: Date = Date(), var name: String = "")

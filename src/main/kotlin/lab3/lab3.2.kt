@@ -14,6 +14,18 @@ fun main() {
     val matrix2 = BoolMatrix(n, m)
     println(matrix1)
     println(matrix2)
+    println("Коньюнкция матриц")
+    println(matrix1.andMatrix(matrix2))
+    println("Дизъюнкция матриц")
+    println(matrix1.orMatrix(matrix2))
+    println("Подсчет нулей матрицы")
+    println(matrix1.countZeros())
+    println("Инверсия матрицы")
+    println(matrix1.inverseMatrix())
+    println("Сортировка матрицы")
+    println(matrix1.sort())
+    println("Умножение матрицы")
+    println(matrix1.multiplyMatrix(matrix2))
 }
 
 class BoolMatrix(private val n: Int, private val m: Int, private val matrix: List<List<Boolean>>) {
@@ -22,7 +34,7 @@ class BoolMatrix(private val n: Int, private val m: Int, private val matrix: Lis
         List(m) { listOf(true, false).random() }
     })
 
-    constructor(matrix: List<List<Boolean>>) : this(matrix.size, matrix.getOrNull(0)?.size ?: 0, matrix)
+    constructor(matrix: List<List<Boolean>>) : this(matrix.size, matrix.firstOrNull()?.size ?: 0, matrix)
 
     override fun toString(): String {
         return matrix.toString()
@@ -67,6 +79,7 @@ class BoolMatrix(private val n: Int, private val m: Int, private val matrix: Lis
             }
             tempMatrix.add(row)
         }
+        BoolMatrix(tempMatrix)
     } else {
         throw Exception()
     }
@@ -74,7 +87,7 @@ class BoolMatrix(private val n: Int, private val m: Int, private val matrix: Lis
     fun sort() = BoolMatrix(matrix.map { it.sorted() })
 
     fun countZeros() = matrix.sumOf {
-        it.count { value -> value }
+        it.count { value -> !value }
     }
 
 }

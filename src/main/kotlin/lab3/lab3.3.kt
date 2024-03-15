@@ -1,7 +1,6 @@
 package org.example.lab3
 
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 import kotlin.random.Random
 
@@ -56,7 +55,7 @@ fun main() {
 
 }
 
-class Product(
+data class Product(
     private val id: Int = Random.nextInt(),
     val name: String,
     val upc: String,
