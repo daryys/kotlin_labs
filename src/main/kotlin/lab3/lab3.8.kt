@@ -67,7 +67,7 @@ class Cash(
     val administrators: MutableList<Administrator> = mutableListOf()
 ) {
     fun registerRequest(request: Request) =
-        trains.filter { it.departure?.after(request.date) ?: false && it.listOfDestination.contains(request.destination) }
+        trains.filter { it.departure.after(request.date) && it.listOfDestination.contains(request.destination) }
 
     fun addAdmin() {
         println("Name")
@@ -121,7 +121,7 @@ class Cash(
 
 data class TrainModel(
     val id: Int = Random.nextInt(),
-    val departure: Date? = null,
+    val departure: Date,
     val price: Int,
     val listOfDestination: List<String>,
 )

@@ -4,9 +4,6 @@ import java.util.*
 
 // Создать объект класса Фотоальбом, используя класс Фотография.
 // Методы: задать название фотографии, дополнить фотоальбом фотографией, вывести на консоль количество фотографий.
-fun main() {
-
-}
 
 class Album(private val listOfPhotos: MutableList<Photo> = mutableListOf()) {
 

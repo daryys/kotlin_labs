@@ -7,10 +7,6 @@ import kotlin.math.abs
 // Методы: задать дату, вывести на консоль день недели по заданной дате,
 // рассчитать количество дней в заданном временном промежутке.
 
-fun main() {
-
-}
-
 data class Year(private var year: Int, private var day: Day, private var month: Month) {
 
     fun setDate(
