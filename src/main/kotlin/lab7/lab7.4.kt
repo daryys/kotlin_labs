@@ -1,16 +1,16 @@
 import org.example.lab7.removeIfNotLetter
 import kotlin.math.abs
 
-// 9.	Преобразовать каждое слово в тексте, удалив из него все последующие (предыдущие) вхождения первой (последней) буквы этого слова
-
-// 10.	Исключить из текста подстроку максимальной длины, начинающуюся и заканчивающуюся одним и тем же символом
+// 9. Преобразовать каждое слово в тексте, удалив из него все последующие (предыдущие) вхождения
+// первой (последней) буквы этого слова
+// 10. Исключить из текста подстроку максимальной длины, начинающуюся и заканчивающуюся одним и тем же символом
 
 fun main() {
-    f()
-    s()
+    seventhTask()
+    eighthTask()
 }
 
-fun f() {
+fun seventhTask() {
     val resultFirst = readln().split(" ").map { it.removeIfNotLetter().lowercase() }.joinToString(" ") {
         it.filterIndexed { index, char ->
             index == 0 || char != it[0]
@@ -25,7 +25,7 @@ fun f() {
     println(resultSecond)
 }
 
-fun s() {
+fun eighthTask() {
     var max = 0
     var startIndex = 0
     var endIndex = 0

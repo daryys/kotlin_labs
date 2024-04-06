@@ -1,13 +1,14 @@
-// В стихотворении найти одинаковые буквы, которые встречаются во всех словах.
+package org.example.lab7
 
-// В тексте найти первую подстроку максимальной длины, не содержащую букв.
+// 9. В стихотворении найти одинаковые буквы, которые встречаются во всех словах.
+// 10. В тексте найти первую подстроку максимальной длины, не содержащую букв.
 
 fun main() {
-    firstTask()
-    secondTask()
+    thirdTask()
+    fourthTask()
 }
 
-fun firstTask() {
+fun thirdTask() {
     val map = mutableMapOf<Char, Int>()
     val input = readln().split(" ")
     input.map { string ->
@@ -19,7 +20,7 @@ fun firstTask() {
     println(result)
 }
 
-fun secondTask() {
+fun fourthTask() {
     val input = readln().lowercase().split(Regex("[a-zA-z]")).maxBy { it.length }
     println(input)
 }

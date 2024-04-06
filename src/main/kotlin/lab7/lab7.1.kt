@@ -5,11 +5,11 @@ package org.example.lab7
 // между скобками ‘(’ и ‘)’ или между звездочками ‘*’ и т.п.).
 
 fun main() {
-    firstTask1()
+    firstTask()
     secondTask()
 }
 
-fun firstTask1() {
+fun firstTask() {
     val n = readln().toIntOrNull() ?: 1
     val result = readln().split(" ").filter {
         it.length != n || listOf(
@@ -32,3 +32,11 @@ fun secondTask() {
     }.joinToString("")
     println(result)
 }
+
+fun String.removeIfNotLetter(): String = this.map {
+    if (it.isLetter() || it == '-' || it == '\'') {
+        it
+    } else {
+        ' '
+    }
+}.joinToString("").replace(" ", "")
