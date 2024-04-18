@@ -1,7 +1,5 @@
 package org.example.lab9
 
-import java.util.stream.IntStream
-
 fun main() {
     third()
     fourth()
