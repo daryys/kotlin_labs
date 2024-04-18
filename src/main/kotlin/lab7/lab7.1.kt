@@ -32,11 +32,3 @@ fun secondTask() {
     }.joinToString("")
     println(result)
 }
-
-fun String.removeIfNotLetter(): String = this.map {
-    if (it.isLetter() || it == '-' || it == '\'') {
-        it
-    } else {
-        ' '
-    }
-}.joinToString("").replace(" ", "")

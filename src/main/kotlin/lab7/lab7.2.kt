@@ -11,7 +11,7 @@ fun main() {
 fun thirdTask() {
     val map = mutableMapOf<Char, Int>()
     val input = readln().split(" ")
-    input.map { string ->
+    input.forEach { string ->
         string.filter { it.isLetter() }.map { it }.distinct().forEach {
             map[it] = (map[it] ?: 0) + 1
         }
@@ -21,8 +21,6 @@ fun thirdTask() {
 }
 
 fun fourthTask() {
-    val input = readln().lowercase().split(Regex("[a-zA-z]")).maxBy { it.length }
+    val input = readln().split(Regex("[a-zA-Z]")).maxBy { it.length }
     println(input)
 }
-
-

@@ -1,5 +1,3 @@
-import org.example.lab7.removeIfNotLetter
-
 // 9. Напечатать слова русского текста в алфавитном порядке по первой букве.
 // Слова, начинающиеся с новой буквы, печатать с красной строки.
 // 10. Рассортировать слова русского текста по возрастанию доли гласных букв
@@ -11,21 +9,31 @@ fun main() {
 }
 
 fun fifthTask() {
-    val result = readln().split(" ").map { it.removeIfNotLetter().lowercase() }.sorted()
-        .groupBy { it.first() }.forEach {
-            it.value.forEach { word ->
-                print("$word ")
-            }
-            println()
+    readln().lowercase().split(" ").sorted().groupBy { it.first() }.forEach {
+        it.value.forEach { word ->
+            print("$word ")
         }
+        println()
+    }
 }
 
 fun sixthTask() {
-    val result = readln().split(" ").map { it.removeIfNotLetter().lowercase() }.map {
+    val result = readln().lowercase().split(" ").map {
         Pair(
-            it.filter { letter -> listOf("a", "o", "e", "i", "u", "y").contains(letter.toString()) }.length / it.length,
+            it.filter { letter ->
+                listOf(
+                    "а",
+                    "е",
+                    "и",
+                    "о",
+                    "у",
+                    "э",
+                    "я",
+                    "ю"
+                ).contains(letter.toString())
+            }.length / it.length,
             it
         )
-    }
+    }.sortedBy { it.first }.reversed()
     println(result)
 }
