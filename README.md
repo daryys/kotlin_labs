@@ -11,6 +11,6 @@
 - ЛР5 - Исключения. Файлы
 - ЛР6 - Коллекции
 - ЛР7 - Строки
-- ЛР8 - Потоки (Threads)
+- [ЛР8](https://github.com/daryys/kotlin_labs/files/15193006/8.docx) - Потоки (Threads)
 - ЛР9 - Stream API
 - [ЛР10](https://github.com/daryys/kotlin_labs/files/15153516/10.docx) - Spark
