@@ -9,11 +9,8 @@
 - [ЛР3](https://github.com/daryys/kotlin_labs/files/15192795/3.docx) - Классы. Наследование. Полиморфизм
 - ЛР4 - Внутренние классы. Интерфейсы
 - [ЛР5](https://github.com/daryys/kotlin_labs/files/15209675/5.docx) - Исключения. Файлы
-- [ЛР6](https://github.com/daryys/kotlin_labs/files/15209681/6.docx)
- - Коллекции
+- [ЛР6](https://github.com/daryys/kotlin_labs/files/15209681/6.docx) - Коллекции
 - ЛР7 - Строки
-- [ЛР8](https://github.com/daryys/kotlin_labs/files/15209680/8.docx)
- - Потоки (Threads)
-- [ЛР9](https://github.com/daryys/kotlin_labs/files/15209679/9.docx)
- - Stream API
+- [ЛР8](https://github.com/daryys/kotlin_labs/files/15209680/8.docx) - Потоки (Threads)
+- [ЛР9](https://github.com/daryys/kotlin_labs/files/15209679/9.docx) - Stream API
 - [ЛР10](https://github.com/daryys/kotlin_labs/files/15153516/10.docx) - Spark
